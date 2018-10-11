@@ -295,8 +295,17 @@ public class WeiboModule extends ReactContextBaseJavaModule implements ActivityE
             if (data.hasKey(RCTWBShareTitle)) {
                 weiboMessage.mediaObject.title = data.getString(RCTWBShareTitle);
             }
+            if (data.hasKey(RCTWBShareText)) {
+                TextObject textObject = new TextObject();
+                textObject.text = data.getString(RCTWBShareText);
+                weiboMessage.textObject = textObject;
+            }
             if (bitmap != null) {
                 weiboMessage.mediaObject.setThumbImage(bitmap);
+                
+                ImageObject imageObject = new ImageObject();
+                imageObject.setImageObject(bitmap);
+                weiboMessage.imageObject = imageObject;
             }
             weiboMessage.mediaObject.identify = Utility.generateGUID();
         }

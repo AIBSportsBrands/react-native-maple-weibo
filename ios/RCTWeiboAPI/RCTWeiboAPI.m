@@ -267,6 +267,10 @@ RCT_EXPORT_METHOD(shareToWeibo:(NSDictionary *)aData
         if (aImage) {
             //            @warning 大小小于32k
             message.mediaObject.thumbnailData = UIImageJPEGRepresentation(aImage, 0.7);
+
+            WBImageObject *imageObject = [WBImageObject new];
+            imageObject.imageData = UIImageJPEGRepresentation(aImage, 0.7);
+            message.imageObject = imageObject;
         }
     }
     
